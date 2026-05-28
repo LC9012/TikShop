@@ -1,0 +1,202 @@
+/* ==========================================================================
+   AGGIUNTE: Stili per la pagina Dettagli Prodotto (product_details.jsp)
+   ========================================================================== */
+
+.product-detail-layout {
+    display: flex;
+    flex-wrap: wrap; /* Permette il wrap su schermi piccoli */
+    gap: 3rem;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1000px; /* Larghezza massima per il layout a 2 colonne */
+    margin: 2rem auto; /* Centra il contenitore nella pagina */
+    padding: 1.5rem;
+    background: rgba(22, 24, 35, 0.92);
+    border-radius: 22px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #25F4EE;
+    animation: fadeInScaleUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-media-section {
+    flex: 1; /* Occupa lo spazio disponibile */
+    min-width: 300px; /* Larghezza minima prima di wrappare */
+    max-width: 450px; /* Larghezza massima per mantenere proporzioni */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.product-video-detail {
+    width: 100%;
+    aspect-ratio: 9/16; /* Per video verticali */
+    height: auto;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    border: 2px solid #FE2C55; /* Bordo per il video */
+}
+
+.product-main-image { /* Stile se usi un tag <img> separato per la foto principale */
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    object-fit: contain;
+    margin-top: 1rem;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.product-info-panel-detail {
+    flex: 2; /* Occupa più spazio dei media */
+    min-width: 350px; /* Larghezza minima prima di wrappare */
+    color: #f2f6fa;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title-detail {
+    color: #fff;
+    font-family: 'Segoe UI Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    font-size: 2.2rem;
+    text-shadow: 1px 0 0 #FE2C55, 2px 2px 0 #25F4EE;
+}
+
+.product-price-detail {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #25F4EE;
+    margin-bottom: 1.5rem;
+}
+
+.product-description-detail {
+    color: #aeb4d3;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(37, 244, 238, 0.05); /* Sfondo leggero per la descrizione */
+    border-left: 4px solid #25F4EE;
+    border-radius: 8px;
+}
+
+.product-rating-detail {
+    font-size: 1.5rem;
+    color: #f5b50a;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.product-rating-detail .rating-value {
+    font-size: 1.2rem;
+    color: #d7dae1;
+    margin-left: 8px;
+}
+
+.reviews-count-detail {
+    font-size: 1.1rem;
+    color: #25F4EE;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+.reviews-count-detail:hover {
+    color: #FE2C55;
+}
+
+.product-add-cart-form-detail {
+    margin-top: 2rem;
+    width: 100%;
+}
+.product-add-cart-form-detail .btn-action {
+    width: 100%;
+}
+
+.reviews-section-title {
+    color: #fff;
+    font-family: 'Segoe UI Black', Impact, sans-serif;
+    letter-spacing: 0.5px;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-shadow: 1px 0 0 #FE2C55, 2px 2px 0 #25F4EE;
+    border-top: 1px solid #2a2c37;
+    padding-top: 1.5rem;
+}
+
+.reviews-filter-detail {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.reviews-filter-detail label {
+    color: #aeb4d3;
+    font-weight: 500;
+    cursor: pointer;
+}
+.reviews-filter-detail input[type="radio"] {
+    accent-color: #25F4EE;
+    margin-right: 5px;
+}
+
+.reviews-list-detail {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid #2a2c37;
+    max-height: 400px; /* Limita altezza e aggiunge scroll */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #25F4EE #1e1e28;
+}
+.reviews-list-detail .list-group-item {
+    background-color: transparent !important; /* Per coerenza con lo sfondo */
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    padding: 1rem 0;
+    color: #d7dae1;
+}
+.reviews-list-detail .review-user {
+    font-weight: 600;
+    color: #25F4EE;
+    margin-right: 10px;
+}
+.reviews-list-detail .review-stars {
+    color: #f5b50a;
+    font-size: 1.1em;
+}
+
+/* Media Queries per la Responsività */
+@media (max-width: 768px) {
+    .product-detail-layout {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .product-media-section, .product-info-panel-detail {
+        min-width: unset; /* Rimuove il minimo per mobile */
+        width: 100%;
+        max-width: none;
+    }
+    .product-title-detail {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    .product-price-detail {
+        text-align: center;
+    }
+    .product-description-detail {
+        padding: 0.75rem;
+    }
+    .reviews-section-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .reviews-filter-detail {
+        justify-content: center;
+    }
+}

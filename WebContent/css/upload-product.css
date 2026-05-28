@@ -1,0 +1,92 @@
+@charset "ISO-8859-1";
+body {
+    background: linear-gradient(120deg, #f0f4f9, #cfe2f3 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-container {
+    background: #fff;
+    padding: 2.4rem 2rem 2rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 1.7rem;
+    color: #306090;
+    letter-spacing: 0.5px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+label {
+    font-weight: 500;
+    color: #35506b;
+    margin-bottom: 0.3rem;
+}
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 0.7rem;
+    border: 1.2px solid #d0dae6;
+    border-radius: 7px;
+    background: #f9fbfd;
+    font-size: 1rem;
+    transition: border 0.2s;
+}
+input[type="file"] {
+    border: none;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    background: none;
+}
+textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 180px;
+}
+input:focus, textarea:focus {
+    border-color: #7bb6ff;
+    outline: none;
+    background: #eef7ff;
+}
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.7rem;
+}
+button, .goto-prodotti-btn {
+    background: linear-gradient(90deg, #397be5, #70b2fa);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 0.85rem 1.4rem;
+    font-size: 1.09rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.15s;
+    box-shadow: 0 2px 12px 0 rgba(57, 123, 229, 0.12);
+}
+button:hover, button:focus, .goto-prodotti-btn:hover, .goto-prodotti-btn:focus {
+    background: linear-gradient(90deg, #316ad5, #4c97e3);
+    transform: translateY(-2px) scale(1.03);
+}
+.success-message {
+    background: #e0ffe8;
+    color: #1b7340;
+    border: 1px solid #a8e5c1;
+    border-radius: 7px;
+    padding: 1.1rem 0.7rem;
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 1.08rem;
+}

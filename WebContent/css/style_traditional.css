@@ -1,0 +1,277 @@
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: #161823;
+    color: #fff;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+
+  .main-trad-row { min-height: 100vh; padding-left: 240px; }
+
+  .sidebar-reparti {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 220px; min-width: 170px; max-width: 260px;
+    background: #191c22;
+    color: #fff;
+    padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+    display: flex; flex-direction: column; align-items: flex-start;
+    z-index: 1030;
+    border-right: 2px solid #1e2533;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    box-shadow: 2px 0 10px #0006;
+  }
+
+  .reparti-title {
+    font-size: 1.22rem;
+    letter-spacing: 0.5px;
+    color: #25F4EE;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+  }
+
+  .reparti-list { list-style: none; padding-left: 0; width: 100%; }
+  .reparti-list li { margin-bottom: 0.44em; }
+
+  .reparto-link {
+    color: #d7dae1;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    padding: 0.45em 0.6em;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+    cursor: pointer;
+  }
+  .reparto-link.active,
+  .reparto-link:hover {
+    background: #25F4EE;
+    color: #161823;
+  }
+
+  .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #191c22;
+  border-bottom: 2px solid #1e2533;
+  z-index: 1040;
+  padding: 8px 20px;
+  box-shadow: 0 4px 12px #0004;
+}
+
+.logo-tikshop {
+  font-size: 2rem;
+  font-family: 'Segoe UI Black', Impact, Arial, sans-serif;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #000a, 1px 0 0 #FE2C55, 2px 2px 0 #25F4EE;
+  user-select: none;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.top-bar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+  .profile-btn, .cart-icon-btn, .pendulum-btn {
+    background: rgba(0,0,0,0.32);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 10px #0006;
+    padding: 8px 9px 6px 9px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    transition: background 0.15s;
+    margin-left: 8px;
+    color: #fff;
+  }
+
+  .profile-btn:hover, .cart-icon-btn:hover, .pendulum-btn:hover {
+    background: #25F4EE;
+    color: #161823;
+  }
+
+  .pendulum-btn {
+    border-radius: 15px;
+    min-width: 48px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    padding: 8px 19px;
+    background: linear-gradient(90deg,#25F4EE 30%,#FE2C55 100%);
+    box-shadow: 0 2px 12px #0004;
+    margin-left: 18px;
+  }
+
+  .catalogo-container {
+    margin-top: 70px;
+    margin-left: 235px;
+    padding: 2.2rem 2.2vw 1.8rem 2.2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .search-bar-tradizionale {
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+
+  .search-bar-tradizionale input {
+    border-radius: 12px;
+    font-size: 1.08rem;
+    padding: 8px 16px;
+    border: 1.5px solid #25F4EE;
+    background: #1e1e28;
+    color: #fff;
+    box-shadow: 0 2px 10px #0003;
+    max-width:400px;
+  }
+
+  .prodotti-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 32px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 1.2rem;
+    margin-left: -200px;
+    margin-right: auto;
+  }
+
+  .prodotto-card {
+    background: #191c22;
+    border-radius: 17px;
+    box-shadow: 0 4px 24px #0004;
+    padding: 1.3rem 1.09rem 1.2rem 1.09rem;
+    display: flex; flex-direction: column; align-items: center; position: relative;
+    min-height: 380px;
+    transition: box-shadow 0.18s;
+    color: #fff;
+    border: 1px solid #25F4EE;
+  }
+
+  .prodotto-card:hover { box-shadow: 0 8px 32px #25F4EE99; }
+
+  .prodotto-img {
+    width: 100%; max-width: 180px; height: 170px;
+    object-fit: contain;
+    border-radius: 11px;
+    background: #1e1e28;
+    box-shadow: 0 2px 8px #0002;
+    margin-bottom: 0.9rem;
+  }
+
+  .prodotto-nome {
+    font-weight:600;
+    font-size:1.10rem;
+    color:#fff;
+    margin-bottom:0.3rem;
+    text-align:left;
+    width:100%;
+  }
+
+  .prodotto-prezzo {
+    color: #FE2C55;
+    font-size: 1.13rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .prodotto-desc {
+    color: #d7dae1;
+    font-size: 1.01rem;
+    margin-bottom: 0.7rem;
+    width: 100%;
+    text-align: left;
+    min-height: 48px;
+  }
+
+  .card-bottom-bar {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 1.1rem 0.95rem 1.1rem;
+    width: 100%;
+  }
+
+  .card-stars-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-stars {
+    font-size: 1.14rem;
+    color: #f5b50a;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    cursor:pointer;
+  }
+
+  .card-reviews-count {
+    font-size: 0.99rem;
+    color: #25F4EE;
+    margin-top: 1px;
+    margin-left: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+    display: inline-block;
+  }
+
+  .card-add-btn {
+    background: linear-gradient(90deg,#FE2C55,#25F4EE);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.01rem;
+    font-weight: 600;
+    padding: 0.55em 1.19em;
+    box-shadow: 0 2px 12px #0004;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 42px;
+    margin-left: auto;
+  }
+
+  .card-add-btn:hover {
+    background: linear-gradient(90deg,#25F4EE,#FE2C55);
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #FE2C55;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 1px 6px;
+    border-radius: 12px;
+  }

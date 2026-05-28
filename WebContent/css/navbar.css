@@ -1,0 +1,44 @@
+/* File: /css/navbar.css */
+
+.navbar {
+    /* 1. Cambiato il colore di sfondo come richiesto */
+    background-color: #161823;
+    
+    padding: 15px 30px;
+    
+    /* L'ombra non è più molto visibile su uno sfondo scuro,
+       quindi la sostituiamo con un bordo inferiore per un look più pulito e moderno. */
+    box-shadow: none; 
+    border-bottom: 1px solid #2a2c37; /* Un bordo sottile per separare la navbar dal contenuto */
+
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+}
+
+.nav-items {
+    display: flex;
+    gap: 25px; 
+}
+
+.nav-link {
+    /* 2. Cambiato il colore delle icone/bottoni in bianco */
+    color: #ffffff; 
+    
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+/* Effetto al passaggio del mouse: le icone diventano leggermente grigie per dare un feedback visivo */
+.nav-link:hover {
+    color: #bbbbbb; 
+}
+
+.material-icons {
+    font-size: 28px; 
+}

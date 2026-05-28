@@ -1,0 +1,25 @@
+# === Eclipse & Metadata ===
+.metadata/
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+local.properties
+.recommenders/
+
+# === Build and Output Directories ===
+build/
+WebContent/WEB-INF/classes/
+
+# === Local Secrets & Configs ===
+db.properties
+
+# === Operating System Files ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# === Logs ===
+*.log

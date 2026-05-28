@@ -1,0 +1,178 @@
+/* File: /css/style_white.css (VERSIONE FINALE E OTTIMIZZATA) */
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. Stili Globali e Reset
+   ========================================================================== */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #161823;
+    color: #fff;
+    font-family: 'Roboto', Arial, sans-serif;
+    overflow-x: hidden; /* Impedisce lo scroll orizzontale indesiderato */
+}
+
+a {
+    color: #25F4EE;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #FE2C55;
+}
+
+/* ==========================================================================
+   2. Layout Principale a 3 Colonne
+   ========================================================================== */
+.main-flex-row {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 70px); /* Altezza - altezza navbar */
+    
+    /* --- ISTRUZIONI DI CENTRATURA E SPAZIATURA --- */
+    justify-content: center; /* Allinea le colonne al centro dello spazio disponibile */
+    align-items: center;     /* Allinea verticalmente gli elementi al centro */
+    gap: 2rem;               /* Spazio tra le colonne */
+    padding: 1rem;           /* Spazio dai bordi dello schermo */
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   3. Definizione delle Colonne
+   ========================================================================== */
+
+/* --- Colonna Sinistra (Sidebar) --- */
+.left-sidebar {
+    flex: 0 0 220px; /* Larghezza fissa: non cresce, non si restringe */
+    align-self: stretch; /* Si allunga per tutta l'altezza del container */
+    display: flex;
+    flex-direction: column;
+}
+.profile-btn-box { 
+    margin: 28px 0 0 18px; 
+}
+.logo-tikshop {
+    margin-top: 40px;
+    margin-left: 28px;
+    /* ... stili testo invariati ... */
+}
+.slogan-tikshop {
+    margin-top: 10px;
+    margin-left: 30px;
+    /* ... stili testo invariati ... */
+}
+
+/* --- Colonna Centrale (Video) --- */
+.video-center-col {
+    flex: 0 0 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 80px; /* Spazio per la search bar */
+}
+.video-search-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: 420px;
+    /* ... altri stili invariati ... */
+}
+.tiktok-video {
+    width: 100%;
+    max-width: 390px;
+    aspect-ratio: 9/16;
+    height: auto; /* L'aspect-ratio gestisce l'altezza */
+    /* ... altri stili invariati ... */
+}
+
+/* --- Colonna Destra (Info Prodotto) --- */
+.right-info-col {
+    flex: 0 0 380px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cart-btn-box {
+    align-self: flex-end; /* Allinea il carrello a destra della colonna */
+    margin: 28px 0 0 0;
+}
+.product-info-panel {
+    width: 100%;
+    max-width: 360px;
+    margin-top: 1rem;
+    /* ... altri stili invariati ... */
+}
+.affianco-slogan-tradizionale {
+    margin-top: auto; /* Spinge questo blocco in fondo alla colonna */
+    padding-top: 2rem;
+    width: 100%;
+    max-width: 360px;
+}
+
+/* ==========================================================================
+   4. Stili per Componenti Specifici (confermati e invariati)
+   ========================================================================== */
+.profile-btn { /*...*/ }
+.video-search-input { /*...*/ }
+.search-reset-btn { /*...*/ }
+@keyframes bounce { /*...*/ }
+.arrow-hint { /*...*/ }
+.cart-icon-btn { /*...*/ }
+.cart-badge { /*...*/ }
+.product-title { /*...*/ }
+.product-price { /*...*/ }
+.product-description { /*...*/ }
+.product-rating { /*...*/ }
+.reviews-count { /*...*/ }
+.product-add-cart-btn { /*...*/ }
+.slogan-tradizionale-style { /*...*/ }
+.pendulum-btn { /*...*/ }
+@keyframes pendulum-swing { /*...*/ }
+
+
+/* ==========================================================================
+   5. Responsività
+   ========================================================================== */
+@media (max-width: 1100px) {
+    .main-flex-row {
+        flex-direction: column; /* Impila le colonne una sopra l'altra */
+        height: auto; /* Permette alla pagina di crescere in altezza */
+        min-height: calc(100vh - 70px);
+        gap: 3rem; /* Aumenta lo spazio verticale tra le sezioni */
+    }
+    .left-sidebar {
+        flex-direction: row; /* La sidebar diventa una riga in cima */
+        width: 100%;
+        max-width: 600px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        flex-basis: auto;
+        align-self: center;
+        height: auto; /* Altezza automatica */
+    }
+    .slogan-tikshop, .logo-tikshop { 
+        display: none; /* Nascondiamo logo e slogan per semplicità, lasciando solo il tasto profilo */
+    }
+    .profile-btn-box { margin: 0; }
+
+    .video-center-col, .right-info-col {
+        padding-top: 0;
+        flex-basis: auto;
+        align-self: center;
+        width: 100%;
+    }
+  
+	.cart-btn-box {
+    position: fixed; /* Lo rendiamo fisso rispetto alla finestra del browser */
+    top: 20px;       /* Distanza dall'alto */
+    right: 30px;     /* Distanza da destra */
+    z-index: 1010;   /* Un z-index alto per essere sopra quasi tutto */
+}
+    .affianco-slogan-tradizionale { margin-top: 2rem; }
+}

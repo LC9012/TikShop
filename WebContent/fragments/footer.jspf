@@ -1,0 +1,46 @@
+<%@ page import="java.util.List, model.Product" %>
+<script>
+    // Definiamo una variabile globale con il context path dell'applicazione.
+    // Questo permette ai file JS esterni di costruire URL corretti senza hardcodare il percorso.
+    window.appContextPath = "<%= request.getContextPath() %>";
+    <%
+        List<Product> productsForJs = (List<Product>) request.getAttribute("products");
+        boolean hasProductsForJs = productsForJs != null && !productsForJs.isEmpty();
+        if (hasProductsForJs) {
+    %>
+        window.products = [
+            <% for (int i = 0; i < productsForJs.size(); i++) {
+                Product p = productsForJs.get(i);
+                // Escape dei caratteri per evitare errori nel JSON
+                String name = (p.getName() != null) ? p.getName().replace("\\", "\\\\").replace("\"", "\\\"").replace("\r", "").replace("\n", "\\n") : "";
+                String videoUrl = (p.getVideoUrl() != null) ? p.getVideoUrl().replace("\\", "\\\\").replace("\"", "\\\"").replace("\r", "").replace("\n", "\\n") : "";
+                String fotoUrl = (p.getFotoUrl() != null) ? p.getFotoUrl().replace("\\", "\\\\").replace("\"", "\\\"").replace("\r", "").replace("\n", "\\n") : "";
+                String description = (p.getDescription() != null && !p.getDescription().trim().isEmpty() && !"null".equalsIgnoreCase(p.getDescription().trim()))
+                    ? p.getDescription().replace("\\", "\\\\").replace("`", "'").replace("\"", "\\\"").replace("\r", "").replace("\n", "\\n")
+                    : "Nessuna descrizione.";
+            %>
+            {
+                "name": "<%= name %>",
+                "price": <%= p.getPrice() %>,
+                "id": <%= p.getId() %>,
+                "videoUrl": "<%= videoUrl %>",
+                "fotoUrl": "<%= fotoUrl %>",
+                "description": "<%= description %>",
+                "rating": <%= p.getRating() %>
+            }<%= (i < productsForJs.size() - 1) ? "," : "" %>
+            <% } %>
+        ];
+    <% } else { %>
+        window.products = [];
+    <% } %>
+</script>
+
+<%-- Bootstrap Bundle (offcanvas, dropdown) --%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<%-- Script personalizzati che servono in più pagine --%>
+<script src="<%= request.getContextPath() %>/js/products.js"></script>
+<script src="<%= request.getContextPath() %>/js/theme.js"></script>
+
+</body>
+</html>

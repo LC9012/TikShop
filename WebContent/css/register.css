@@ -1,0 +1,97 @@
+@charset "ISO-8859-1";
+body {
+  background: linear-gradient(120deg, #f0f4f9, #cfe2f3 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  background: #fff;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  width: 100%;
+  max-width: 370px;
+  box-sizing: border-box;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  color: #306090;
+  letter-spacing: 0.5px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+label {
+  font-weight: 500;
+  color: #35506b;
+  margin-bottom: 0.3rem;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.7rem;
+  border: 1.2px solid #d0dae6;
+  border-radius: 7px;
+  background: #f9fbfd;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+input:focus {
+  border-color: #7bb6ff;
+  outline: none;
+  background: #eef7ff;
+}
+.btn-submit {
+  background: linear-gradient(90deg, #397be5, #70b2fa);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 0.85rem;
+  font-size: 1.09rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 12px 0 rgba(57, 123, 229, 0.15);
+}
+.btn-submit:hover, .btn-submit:focus {
+  background: linear-gradient(90deg, #316ad5, #4c97e3);
+  transform: translateY(-2px) scale(1.03);
+}
+.message {
+  margin-top: 1.2rem;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 6px;
+  padding: 0.7rem 0.5rem;
+}
+.message.error {
+  background: #ffe0e0;
+  color: #d24444;
+  border: 1px solid #f5c2c7;
+}
+.message.success {
+  background: #e0ffe8;
+  color: #1b7340;
+  border: 1px solid #a8e5c1;
+}
+.link-login {
+  display: block;
+  text-align: center;
+  margin-top: 1.6rem;
+  color: #397be5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.18s;
+}
+.link-login:hover {
+  color: #2056a3;
+  text-decoration: underline;
+}

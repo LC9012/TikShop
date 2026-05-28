@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <div class="nav-items">
+        <a href="<%= request.getContextPath() %>/ProductServlet" class="nav-link" title="Home">
+            <span class="material-icons">home</span>
+        </a>
+        <a href="#" class="nav-link" id="backButton" style="display: none;" title="Indietro">
+            <span class="material-icons">arrow_back</span>
+        </a>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const backButton = document.getElementById("backButton");
+        
+        // Controlla nel sessionStorage se questa non è la prima pagina della sessione.
+        if (sessionStorage.getItem("isNotFirstPage")) {
+            backButton.style.display = "flex";
+        }
+
+        // Imposta il flag nel sessionStorage per le prossime pagine visitate.
+        sessionStorage.setItem("isNotFirstPage", "true");
+
+        // Aggiungi l'evento click al pulsante "indietro"
+        backButton.addEventListener("click", function(event) {
+            event.preventDefault(); 
+            history.back();      
+        });
+    });
+</script>

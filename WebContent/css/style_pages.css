@@ -1,0 +1,1126 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. Stili Globali e Layout di Base
+   ========================================================================== */
+
+/* Animazioni riutilizzabili */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(2px); }
+    50% { transform: translateY(-7px); }
+}
+
+/* Layout di base della pagina */
+.page-container {
+    padding: 3rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* ==========================================================================
+   2. Componenti Generali (Riutilizzabili)
+   ========================================================================== */
+
+/* --- Contenitori Principali (Card) --- */
+.profile-card-container,
+.orders-container,
+.support-container,
+.settings-container,
+.privacy-container,
+.auth-container,
+.admin-container,
+.checkout-summary,
+.order-summary-container {
+    background: rgba(22, 24, 35, 0.92);
+    color: #f2f6fa;
+    border-radius: 22px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    width: 100%;
+    border: 1.5px solid #25F4EE;
+    animation: fadeInScaleUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-fill-mode: both; /* Mantiene lo stato finale dell'animazione */
+}
+
+/* --- Titoli delle sezioni (H1, H2) --- */
+.profile-card-container h2,
+.orders-container h2,
+.support-header h2,
+.settings-container h2,
+.privacy-container h2,
+.auth-container h2,
+.cart-items-container h2,
+.order-summary-container h2,
+.checkout-main-content h1,
+.checkout-summary h2,
+.admin-header h1 {
+    color: #fff;
+    font-family: 'Segoe UI Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    text-shadow: 1px 0 0 #FE2C55, 2px 2px 0 #25F4EE;
+}
+
+/* --- Stili per i Pulsanti --- */
+.btn-action, .btn-secondary, .btn-danger {
+    border-radius: 25px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.7em 1.4em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.btn-action { /* Pulsante Primario */
+    background: linear-gradient(90deg, #FE2C55 0%, #25F4EE 100%);
+    color: #fff;
+    border: none;
+}
+.btn-action:hover {
+    background: linear-gradient(90deg, #25F4EE 0%, #FE2C55 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.btn-secondary { /* Pulsante Secondario */
+    background: transparent;
+    color: #25F4EE;
+    border: 2px solid #25F4EE;
+}
+.btn-secondary:hover {
+    background: #25F4EE;
+    color: #161823;
+    transform: scale(1.05);
+}
+
+.btn-danger { /* Pulsante di Pericolo */
+    background: transparent;
+    color: #FE2C55;
+    border: 2px solid #FE2C55;
+}
+.btn-danger:hover {
+    background: #FE2C55;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* --- Stili per i Form --- */
+.form-label, .auth-form label {
+    font-weight: 500;
+    color: #aeb4d3;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control-modern {
+    background-color: #161823;
+    border: 1px solid #333644;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+.form-control-modern:focus {
+    background-color: #161823;
+    color: #fff;
+    border-color: #25F4EE;
+    box-shadow: 0 0 0 3px rgba(37, 244, 238, 0.2);
+    outline: none;
+}
+.form-control-modern[type="file"] {
+    padding: 0.5rem;
+}
+.form-control-modern[type="file"]::file-selector-button {
+    background: linear-gradient(90deg, #FE2C55 0%, #25F4EE 100%);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+.form-control-modern[type="file"]::file-selector-button:hover {
+    background: linear-gradient(90deg, #25F4EE 0%, #FE2C55 100%);
+    transform: scale(1.05);
+}
+
+.form-text { color: #8a91b4; }
+.input-group { position: relative; margin-bottom: 1rem; }
+
+/* --- Alert Boxes --- */
+.alert-modern, .auth-message {
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+    border-left: 4px solid;
+    animation: fadeIn 0.4s;
+}
+.alert-modern.alert-success, .auth-message.success {
+    background-color: rgba(37, 244, 238, 0.1);
+    color: #25F4EE;
+    border-color: #25F4EE;
+}
+.alert-modern.alert-danger, .auth-message.error {
+    background-color: rgba(254, 44, 85, 0.1);
+    color: #FE2C55;
+    border-color: #FE2C55;
+}
+
+/* ==========================================================================
+   3. Stili per Pagine Specifiche
+   ========================================================================== */
+
+/* --- Pagina Profilo --- */
+.profile-card-container { max-width: 480px; }
+.profile-data-display .mb-3 {
+    font-size: 1.1rem; padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.profile-data-display strong { color: #25F4EE; font-weight: 600; margin-right: 10px; }
+.edit-form-container {
+    margin-top: 1.5rem; padding: 1.5rem; background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Pagina Ordini --- */
+.orders-container { max-width: 900px; }
+.accordion-item {
+    background-color: rgba(22, 24, 35, 0.92) !important;
+    border: 1.5px solid #2a2c37 !important;
+    margin-bottom: 1rem;
+    border-radius: 15px !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.accordion-item:hover { border-color: #25F4EE; }
+.accordion-header .accordion-button {
+    background-color: transparent !important; color: #fff !important;
+    font-weight: 600; font-size: 1.1rem; box-shadow: none !important;
+}
+.accordion-header .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2325F4EE'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion-body { background-color: rgba(0, 0, 0, 0.2); color: #d7dae1; padding: 1.5rem; }
+.order-status-badge {
+    font-size: 0.9rem; padding: 0.4em 0.8em; border-radius: 20px;
+    color: #fff; margin-left: 10px;
+}
+.order-status-badge.status-in-elaborazione { background-color: #f5b50a; }
+.order-status-badge.status-consegnato { background-color: #28a745; }
+.order-status-badge.status-restituito { background-color: #17a2b8; }
+.order-status-badge.status-annullato { background-color: #6c757d; }
+.order-items-list { list-style: none; padding: 0; margin-top: 1rem; }
+.order-items-list li {
+    display: flex; align-items: center; gap: 15px; padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.order-items-list li:last-child { border-bottom: none; }
+.order-item-img { width: 45px; height: 45px; border-radius: 8px; object-fit: cover; }
+.order-item-details { flex-grow: 1; }
+.btn-review {
+    border: none; border-radius: 20px; font-weight: 600; padding: 0.4em 1em;
+    font-size: 0.9rem; transition: all 0.3s ease; background: #25F4EE; color: #161823;
+}
+.btn-review:hover { transform: scale(1.1); }
+.badge-reviewed {
+    background-color: rgba(37, 244, 238, 0.2) !important; color: #25F4EE !important;
+    border: 1px solid #25F4EE; padding: 0.5em 0.8em;
+}
+
+/* --- Modale di Recensione --- */
+.modal-content-modern { background-color: #191c22; color: #fff; border: 1px solid #25F4EE; border-radius: 15px; }
+.modal-header-modern { border-bottom: 1px solid #2a2c37; }
+.modal-footer-modern { border-top: 1px solid #2a2c37; }
+.btn-close-white { filter: invert(1) grayscale(100%) brightness(200%); }
+#reviewStars .star {
+    font-size: 2.5rem; color: #444; cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+#reviewStars .star:hover,
+#reviewStars .star.hovered,
+#reviewStars .star.selected { color: #f5b50a; transform: scale(1.15); }
+
+/* --- Pagina Assistenza --- */
+.support-container { max-width: 700px; }
+.support-header { display: flex; align-items: center; gap: 15px; margin-bottom: 0.75rem; }
+.support-header h2 { margin-bottom: 0; }
+.support-desc { color: #aeb4d3; margin-bottom: 2rem; font-size: 1.1rem; text-align: center; }
+.chat-list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.chat-list-header h5 { color: #fff; font-weight: 600; }
+.chat-item {
+    padding: 1rem 1.25rem; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px; margin-bottom: 0.75rem; display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer; transition: all 0.3s ease;
+}
+.chat-item:hover { background: rgba(37, 244, 238, 0.1); border-color: #25F4EE; transform: translateY(-3px); }
+.chat-date { font-size: 0.95rem; color: #aeb4d3; font-weight: 500; }
+
+/* --- Modale della Chat --- */
+.chat-modal-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); display: none;
+    align-items: center; justify-content: center; z-index: 10000;
+    opacity: 0; transition: opacity 0.3s ease;
+}
+.chat-modal-bg.show { display: flex; opacity: 1; }
+.chat-modal {
+    background: #191c22; color: #fff; border-radius: 15px; border: 1px solid #25F4EE;
+    width: 90%; max-width: 420px; height: 70vh; max-height: 600px;
+    position: relative; display: flex; flex-direction: column;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4); transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.chat-modal-bg.show .chat-modal { transform: scale(1); }
+.chat-modal-header { padding: 1rem 1.25rem; border-bottom: 1px solid #2a2c37; display: flex; justify-content: space-between; align-items: center; }
+.chat-modal-header h5 { font-weight: 600; margin: 0; }
+.chat-close-btn { background: none; border: none; font-size: 1.8em; color: #8a91b4; cursor: pointer; transition: color 0.2s, transform 0.2s; }
+.chat-close-btn:hover { color: #FE2C55; transform: rotate(90deg); }
+.chat-messages { flex-grow: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.chat-bubble { max-width: 80%; padding: 0.7rem 1.1rem; border-radius: 18px; font-size: 1rem; line-height: 1.4; word-wrap: break-word; }
+.bubble-user { background: #25F4EE; color: #161823; align-self: flex-end; border-bottom-right-radius: 4px; }
+.bubble-support { background: #2a2c37; color: #e2e4f0; align-self: flex-start; border-bottom-left-radius: 4px; }
+.chat-input-row { display: flex; gap: 10px; padding: 1rem; border-top: 1px solid #2a2c37; }
+.chat-input { flex-grow: 1; background-color: #161823; border: 1px solid #333644; color: #fff; border-radius: 25px; padding: 0.6rem 1.2rem; transition: border-color 0.3s, box-shadow 0.3s; }
+.chat-input:focus { outline: none; border-color: #FE2C55; box-shadow: 0 0 0 3px rgba(254, 44, 85, 0.2); }
+.chat-send-btn {
+    border: none; border-radius: 50%; background: #25F4EE; color: #161823;
+    width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+}
+.chat-send-btn:hover { background: #FE2C55; color: #fff; transform: scale(1.1) rotate(-15deg); }
+.typing-dots { display:flex; gap:3px; height:1.1em; align-items:flex-end; margin-left:0.6em;}
+.typing-dot { width:7px; height:7px; background:#bbb; border-radius:50%; opacity:.6; animation: bounce .9s infinite;}
+.typing-dot:nth-child(2){animation-delay:.18s;}
+.typing-dot:nth-child(3){animation-delay:.36s;}
+
+/* --- Pagina Impostazioni --- */
+.settings-container { max-width: 500px; }
+.settings-container h2 { margin-bottom: 2.5rem; }
+.setting-row { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 1rem; }
+.setting-label { font-size: 1.1rem; font-weight: 500; color: #aeb4d3; }
+.setting-label strong { color: #fff; }
+.info-row { font-size: 1rem; color: #aeb4d3; padding: 1rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 1rem; }
+.privacy-link { color: #25F4EE; text-decoration: none; font-weight: 600; }
+.privacy-link:hover { color: #FE2C55; text-decoration: underline; }
+.site-version { text-align: center; color: #8a91b4; font-size: 0.9rem; margin-top: 2rem; }
+
+/* --- Switch Tema --- */
+.theme-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #2a2c37; border: 2px solid #333644; transition: all .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 24px; width: 24px; left: 3px; bottom: 3px; background-color: white; transition: .4s cubic-bezier(0.68, -0.55, 0.27, 1.55); border-radius: 50%; }
+input:checked + .slider { background-color: #25F4EE; border-color: #25F4EE; }
+input:checked + .slider:before { transform: translateX(26px); }
+.slider .icon { position: absolute; top: 50%; transform: translateY(-50%); color: white; transition: opacity 0.4s, transform 0.4s; }
+.slider .icon.icon-moon { left: 8px; opacity: 1; }
+.slider .icon.icon-sun { right: 8px; opacity: 0; transform: translateY(-50%) rotate(90deg); }
+input:checked + .slider .icon-moon { opacity: 0; transform: translateY(-50%) rotate(-90deg); }
+input:checked + .slider .icon-sun { opacity: 1; color: #161823; transform: translateY(-50%) rotate(0deg); }
+
+/* --- Pagina Privacy --- */
+.privacy-container { max-width: 800px; color: #aeb4d3; line-height: 1.7; }
+.privacy-container h2 { text-align: left; }
+.privacy-container p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+.privacy-container ul { list-style: none; padding-left: 0; margin-bottom: 2rem; }
+.privacy-container li { padding-left: 1.8rem; position: relative; margin-bottom: 1rem; font-size: 1.05rem; }
+.privacy-container li::before { content: '\2714'; position: absolute; left: 0; top: 0; color: #25F4EE; font-weight: bold; }
+.privacy-container a { color: #25F4EE; text-decoration: none; font-weight: 600; border-bottom: 1px dashed rgba(37, 244, 238, 0.5); transition: all 0.3s ease; }
+.privacy-container a:hover { color: #FE2C55; background-color: rgba(254, 44, 85, 0.1); border-bottom-color: #FE2C55; }
+
+/* --- Pagina Carrello --- */
+.cart-page-layout { display: flex; gap: 2rem; align-items: flex-start; width: 100%; max-width: 1200px; margin: 0 auto; }
+.cart-items-container { flex-grow: 1; }
+.cart-item-card {
+    display: flex; align-items: center; gap: 1.5rem; background: rgba(22, 24, 35, 0.92); padding: 1.5rem;
+    border-radius: 18px; border: 1px solid #2a2c37; margin-bottom: 1rem;
+    transition: all 0.3s ease; animation: fadeIn 0.5s ease-out;
+}
+.cart-item-card:hover { border-color: #25F4EE; transform: scale(1.02); }
+.cart-item-img { width: 80px; height: 80px; object-fit: cover; border-radius: 12px; flex-shrink: 0; }
+.cart-item-info { flex-grow: 1; }
+.cart-item-info h5 { font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+.cart-item-info .price { color: #aeb4d3; }
+.quantity-control { display: flex; align-items: center; gap: 0.75rem; }
+.quantity-control .btn {
+    border-radius: 50%; width: 32px; height: 32px; padding: 0; font-weight: 600;
+    border: 1px solid #444; color: #fff; background-color: #2a2c37; transition: all 0.2s ease;
+}
+.quantity-control .btn:hover { background-color: #25F4EE; color: #161823; border-color: #25F4EE; transform: scale(1.1); }
+.quantity-control .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.item-total-price { font-size: 1.2rem; font-weight: 600; color: #fff; text-align: right; min-width: 100px; }
+.remove-item-btn { background: none; border: none; color: #8a91b4; font-size: 1.5rem; transition: all 0.3s ease; padding: 0.5rem; }
+.remove-item-btn:hover { color: #FE2C55; transform: scale(1.2) rotate(5deg); }
+.order-summary-container {
+    width: 100%; max-width: 350px; position: sticky; top: 100px;
+}
+.summary-row { display: flex; justify-content: space-between; font-size: 1.1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.summary-row strong { color: #fff; }
+.summary-row.total { font-size: 1.5rem; font-weight: bold; color: #25F4EE; border-bottom: none; padding-top: 1rem; }
+.summary-row.discount { color: #28a745; font-weight: 600; }
+.coupon-form { margin-top: 1.5rem; display: flex; gap: 0.5rem; }
+.coupon-input { flex-grow: 1; }
+
+/* --- Pagina Checkout --- */
+.checkout-page-layout { display: flex; flex-wrap: wrap; gap: 3rem; width: 100%; max-width: 1100px; margin: 0 auto; }
+.checkout-main-content { flex: 2; min-width: 350px; }
+.checkout-main-content .form-section { margin-bottom: 2.5rem; }
+.checkout-main-content .form-section h3 {
+    font-size: 1.5rem; font-weight: 600; color: #25F4EE; margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem; border-bottom: 1px solid #2a2c37;
+    display: flex; align-items: center; gap: 0.75rem;
+}
+.form-row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.form-row .input-group { flex: 1; min-width: 150px; }
+.expiry-inputs-container { display: flex; gap: 0.75rem; }
+.checkout-summary { flex: 1; min-width: 320px; height: fit-content; position: sticky; top: 100px; }
+.summary-item, .summary-total-row {
+    display: flex; justify-content: space-between; padding: 0.75rem 0;
+    font-size: 1.1rem; color: #aeb4d3; border-bottom: 1px solid #2a2c37;
+}
+.summary-item .item-name { font-weight: 500; color: #fff; }
+.summary-item.discount { color: #28a745; font-weight: 600; }
+.summary-total-row {
+    font-size: 1.5rem; font-weight: bold; color: #25F4EE;
+    border-bottom: none; margin-top: 1rem;
+}
+.summary-total-row .total-label { color: #fff; }
+
+/* --- Pagina Upload Prodotto --- */
+.upload-success-box { text-align: center; padding: 2rem; }
+.upload-success-box h4 { color: #25F4EE; font-weight: 600; margin-bottom: 1.5rem; }
+
+/* --- Pagina Login & Registrazione --- */
+.auth-container { max-width: 420px; }
+.auth-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.switch-form-link { display: block; text-align: center; margin-top: 2rem; color: #aeb4d3; }
+.switch-form-link a {
+    color: #25F4EE; text-decoration: none; font-weight: 600;
+    border-bottom: 1px dashed rgba(37, 244, 238, 0.5); transition: all 0.3s ease;
+}
+.switch-form-link a:hover {
+    color: #FE2C55; background-color: rgba(254, 44, 85, 0.1); border-bottom-color: #FE2C55;
+}
+.input-error-message { color: #FE2C55; font-size: 0.9em; min-height: 1.2em; margin-top: 0.5rem; display: none; }
+.input-error-message.visible { display: block; }
+input.invalid { border-color: #FE2C55 !important; box-shadow: 0 0 0 3px rgba(254, 44, 85, 0.2) !important; }
+.password-instructions { font-size: 0.9em; color: #8a91b4; margin-top: 0.5rem; transition: color 0.3s; }
+.password-instructions.invalid-password { color: #FE2C55 !important; }
+.password-instructions ul { padding-left: 1.2rem; margin-bottom: 0; margin-top: 0.25rem; }
+.password-instructions li.valid { color: #28a745; }
+.password-instructions li.invalid { color: #FE2C55; }
+
+/* --- Pagine di Amministrazione --- */
+.admin-container { max-width: 1400px; }
+.admin-header {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;
+    padding-bottom: 1.5rem; border-bottom: 1px solid #2a2c37;
+}
+.admin-header h1 { text-align: left; }
+.admin-table {
+    width: 100%; border-collapse: separate;
+    border-spacing: 0 0.75rem; /* Spazio verticale tra le righe */
+    margin-top: 1.5rem;
+}
+.admin-table thead th {
+    color: #aeb4d3; font-weight: 600; text-align: left; padding: 1rem;
+    border-bottom: 2px solid #25F4EE; text-transform: uppercase;
+    font-size: 0.9rem; letter-spacing: 0.5px;
+}
+.admin-table tbody tr {
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.admin-table tbody tr:hover {
+    background-color: rgba(37, 244, 238, 0.1);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.admin-table tbody td {
+    padding: 1.25rem 1rem; vertical-align: middle;
+    border: none; border-bottom: 1px solid #2a2c37;
+}
+.admin-table tbody tr:hover td { border-bottom-color: transparent; }
+.admin-table tbody td:first-child { border-radius: 10px 0 0 10px; }
+.admin-table tbody td:last-child { border-radius: 0 10px 10px 0; }
+.admin-table .order-id { font-weight: 700; color: #fff; }
+.admin-table .customer-name { font-weight: 500; color: #f2f6fa; }
+/*  BADGE DI STATO */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 1.2em;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 25px;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    border: none; /* Rimuoviamo il bordo, non più necessario */
+}
+
+/* Colori e stili specifici per ogni stato */
+.status-badge.in-elaborazione {
+    background-color: #f5b50a; /* Giallo/Oro pieno */
+    color: #000; /* Testo nero per leggibilità */
+}
+.status-badge.spedito, .status-badge.in-consegna {
+    background-color: #0d6efd; /* Blu pieno */
+    color: #fff;
+}
+.status-badge.consegnato {
+    background-color: #198754; /* Verde pieno */
+    color: #fff; /* Testo bianco, molto leggibile */
+}
+.status-badge.annullato {
+    background-color: #6c757d; /* Grigio pieno */
+    color: #fff;
+}
+.status-badge.restituito {
+    background-color: #0dcaf0; /* Ciano pieno */
+    color: #000;
+}
+
+
+.status-badge.in-preparazione { 
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.btn-details {
+    background: transparent; border: 1px solid #25F4EE; color: #25F4EE;
+    padding: 0.4rem 1rem; font-size: 0.9rem; font-weight: 600;
+    border-radius: 20px; transition: all 0.2s ease-in-out;
+}
+.btn-details:hover { background: #25F4EE; color: #161823; transform: scale(1.05); }
+
+/* ==========================================================================
+   4. Media Queries per la Responsività
+   ========================================================================== */
+@media (max-width: 992px) {
+    /* Layout Carrello */
+    .cart-page-layout { flex-direction: column; }
+    .order-summary-container { width: 100%; max-width: none; position: static; }
+
+    /* Layout Checkout */
+    .checkout-page-layout { flex-direction: column-reverse; }
+    .checkout-summary { position: static; width: 100%; max-width: none; margin-bottom: 2rem; }
+}
+
+@media (max-width: 576px) {
+    /* Stili generali per mobile */
+    .page-container { padding: 1.5rem 0.75rem; }
+    .profile-card-container, .orders-container, .support-container, .settings-container,
+    .privacy-container, .auth-container, .admin-container, .checkout-summary,
+    .order-summary-container { padding: 1.5rem; }
+
+    h1, h2 { font-size: 1.6rem !important; }
+
+    /* Card Prodotto nel Carrello */
+    .cart-item-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .item-total-price { align-self: flex-end; }
+    .cart-item-img { width: 70px; height: 70px; }
+
+    /* Form in colonne */
+    .form-row { flex-direction: column; gap: 0; }
+}
+/* ==========================================================================
+   5. Miglioramenti e Responsività per Pagine Admin
+   ========================================================================== */
+
+/* --- Miglioramento Header Admin --- */
+/* Aggiunge uno spazio coerente tra i pulsanti di azione nell'header */
+.admin-header-actions {
+    display: flex;
+    flex-wrap: wrap; /* Permette ai pulsanti di andare a capo su schermi piccoli */
+    gap: 0.75rem; /* Spazio tra i pulsanti */
+    justify-content: center; /* Centra i pulsanti quando vanno a capo */
+}
+
+/* --- Responsività della Tabella Admin --- */
+/* Nasconde l'header della tabella su schermi piccoli */
+@media screen and (max-width: 768px) {
+    .admin-table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    /* Trasforma le righe della tabella in card */
+    .admin-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 15px; /* Arrotonda i bordi della card */
+        border: 1px solid #2a2c37;
+        overflow: hidden; /* Nasconde il contenuto che sborda */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .admin-table tr:hover {
+        /* Disattiva l'effetto hover su mobile per evitare problemi con il tocco */
+        transform: none; 
+    }
+
+    /* Le celle diventano blocchi a piena larghezza */
+    .admin-table td {
+        display: block;
+        text-align: right !important; /* Allinea il valore a destra */
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(42, 44, 55, 0.5); /* Separatore tra le "righe" della card */
+        position: relative;
+        padding-left: 50%; /* Lascia spazio a sinistra per l'etichetta */
+    }
+    
+    .admin-table td:last-child {
+        border-bottom: none; /* Rimuove il bordo dall'ultima cella */
+    }
+
+    /* Aggiunge un'etichetta (es: "ID Ordine:") prima del valore */
+    .admin-table td:before {
+        content: attr(data-label); /* Prende il testo dall'attributo data-label */
+        position: absolute;
+        left: 1rem;
+        width: calc(50% - 2rem);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left; /* Allinea l'etichetta a sinistra */
+        font-weight: 600;
+        color: #aeb4d3; /* Colore dell'etichetta */
+    }
+    
+    /* Stili specifici per la cella dei dettagli (il pulsante) */
+    .admin-table td.actions-cell {
+        padding-left: 1rem;
+        text-align: center !important; /* Centra il pulsante */
+    }
+
+    .admin-table td.actions-cell:before {
+        content: ""; /* Nasconde l'etichetta per la cella dei pulsanti */
+    }
+}
+/* --- Contenitori Principali (Card) --- */
+.admin-container {
+    background: rgba(22, 24, 35, 0.92);
+    color: #f2f6fa;
+    border-radius: 22px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 1400px;
+    border: 1.5px solid #25F4EE;
+    animation: fadeInScaleUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-fill-mode: both;
+}
+
+/* --- Intestazione Pagine Admin --- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2c37;
+}
+
+.admin-header h1 {
+    color: #fff;
+    font-family: 'Segoe UI Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0; /* Rimuoviamo il margine per un miglior allineamento */
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 2rem;
+    text-shadow: 1px 0 0 #FE2C55, 2px 2px 0 #25F4EE;
+}
+
+.admin-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* --- Tabella Admin --- */
+.admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.admin-table thead th {
+    color: #aeb4d3;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid #25F4EE;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.admin-table tbody tr {
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(37, 244, 238, 0.1);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.admin-table tbody td {
+    padding: 1.25rem 1rem;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid #2a2c37;
+}
+
+/* --- Badge di Stato (riutilizzato da prima) --- */
+.status-badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 20px;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.status-badge.in-elaborazione { background-color: #0d6efd; }
+.status-badge.spedito { background-color: #f5b50a; color: #000; }
+.status-badge.consegnato, .status-badge.completato { background-color: #198754; }
+.status-badge.annullato, .status-badge.restituito { background-color: #6c757d; }
+
+/* Pulsante Dettagli */
+.btn-details {
+    background: transparent;
+    border: 1px solid #25F4EE;
+    color: #25F4EE;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex; /* Per allineare l'icona */
+    align-items: center;
+    gap: 6px;
+}
+.btn-details:hover {
+    background: #25F4EE;
+    color: #161823;
+    transform: scale(1.05);
+}
+
+/* Sezione responsiva per la tabella */
+@media screen and (max-width: 992px) {
+    .admin-table thead { display: none; }
+    .admin-table tr { display: block; margin-bottom: 1rem; border-radius: 15px; border: 1px solid #2a2c37; overflow: hidden; }
+    .admin-table td { display: block; text-align: right !important; padding-left: 50%; position: relative; }
+    .admin-table td:before { content: attr(data-label); position: absolute; left: 1rem; width: calc(50% - 2rem); padding-right: 10px; white-space: nowrap; text-align: left; font-weight: 600; color: #aeb4d3; }
+}
+
+/* File: /css/style_pages.css */
+/* ASSICURATI CHE QUESTE REGOLE SIANO PRESENTI */
+
+/* --- Contenitore Principale (Card) --- */
+.admin-container { /* Riusiamo questo per il contenitore principale */
+    background: rgba(22, 24, 35, 0.92);
+    color: #f2f6fa;
+    border-radius: 22px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 1400px; /* Più largo per le tabelle */
+    border: 1.5px solid #25F4EE;
+    animation: fadeInScaleUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- Header della Pagina Admin --- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2c37;
+}
+
+.admin-header h1 {
+    color: #fff;
+    font-family: 'Segoe UI Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 2rem;
+    text-shadow: 1px 0 0 #FE2C55, 2px 2px 0 #25F4EE;
+}
+
+/* --- Tabella Admin (Stile Scuro) --- */
+.admin-table-wrapper {
+    overflow-x: auto;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+    margin-top: 1.5rem;
+    min-width: 800px;
+}
+.admin-table thead th {
+    color: #aeb4d3;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid #25F4EE;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+.admin-table tbody tr {
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.admin-table tbody tr:hover {
+    background-color: rgba(37, 244, 238, 0.1);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.admin-table tbody td {
+    padding: 1.25rem 1rem;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid #2a2c37;
+}
+.admin-table tbody td:first-child { border-radius: 10px 0 0 10px; }
+.admin-table tbody td:last-child { border-radius: 0 10px 10px 0; }
+.admin-table .order-id { font-weight: 700; color: #fff; }
+.admin-table .customer-name { font-weight: 500; color: #f2f6fa; }
+
+/* Badge di stato (Stile Scuro) */
+.status-badge-admin {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+.status-badge-admin.in-elaborazione { background-color: #0d6efd; color: #fff; }
+.status-badge-admin.spedito { background-color: #ffc107; color: #000; }
+.status-badge-admin.consegnato { background-color: #198754; color: #fff; }
+.status-badge-admin.annullato, .status-badge-admin.restituito { background-color: #454a54; color: #aeb4d3; }
+
+/* Pulsante Dettagli */
+.btn-details {
+    background-color: transparent;
+    border: 1px solid #25F4EE;
+    color: #25F4EE;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+}
+.btn-details:hover {
+    background-color: #25F4EE;
+    color: #161823;
+    transform: scale(1.05);
+}
+/* File: /css/style_pages.css o admin_style.css */
+/* AGGIUNGI QUESTO CODICE IN FONDO */
+
+/* --- Stili per la riga dei dettagli a comparsa --- */
+.order-details-row td {
+    padding: 0 !important; /* Rimuoviamo il padding dalla cella contenitore */
+    border: none !important;
+    /* Rimuoviamo l'ombra per evitare effetti strani durante l'apertura/chiusura */
+    box-shadow: none !important;
+}
+
+/* Contenuto del dropdown dei dettagli */
+.order-details-content {
+    background-color: rgba(0, 0, 0, 0.3); /* Sfondo leggermente più scuro */
+    padding: 1.5rem 2rem;
+    color: #f2f6fa;
+}
+
+.order-details-content h6 {
+    font-weight: 600;
+    color: #25F4EE;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.detail-item .detail-label {
+    flex: 0 0 180px; /* Larghezza fissa per l'etichetta */
+    font-weight: 600;
+    color: #aeb4d3;
+}
+
+.detail-item .detail-value {
+    font-family: monospace; /* Font diverso per i dati, per distinguerli */
+}
+
+/* Animazione per l'icona del pulsante "Dettagli" */
+.btn-details .fas {
+    transition: transform 0.3s ease;
+}
+
+/* Quando il dropdown è aperto, il pulsante cambia stato */
+.btn-details[aria-expanded="true"] .fas {
+    transform: rotate(180deg);
+}
+/* Queste regole sono già nel tuo style_pages.css o admin_style.css */
+.btn-admin { /* Stile di base dei pulsanti admin */ }
+.btn-admin.btn-success { background-color: #198754; }
+.btn-admin.btn-warning { background-color: #ffc107; color: #000; }
+.btn-admin.btn-sm { /* Aggiungiamo una regola per i pulsanti piccoli se non c'è */
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+}
+
+/* File: /css/style_pages.css */
+
+/* --- Pulsanti con Stile "TikShop" --- */
+/* Assicurati che .btn-danger sia definito così */
+.btn-danger {
+    background: transparent;
+    color: #FE2C55;
+    border: 2px solid #FE2C55;
+}
+.btn-danger:hover {
+    background: #FE2C55;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* NUOVA CLASSE per il pulsante "success" (verde) */
+.btn-success-outline {
+    background: transparent;
+    color: #28a745; /* Verde successo */
+    border: 2px solid #28a745;
+}
+.btn-success-outline:hover {
+    background: #28a745;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* NUOVA CLASSE per rendere i bottoni più piccoli */
+.btn-sm {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* File: /css/style_pages.css */
+/* AGGIUNGI QUESTO CODICE IN FONDO AL FILE ESISTENTE */
+
+/* --- Stile specifico per l'Offcanvas del Profilo --- */
+.offcanvas {
+    background-color: #191c22; /* Sfondo scuro ma leggermente diverso dal body */
+    color: #f2f6fa;
+    border-left: 1px solid #25F4EE;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #2a2c37;
+}
+
+.offcanvas-title {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Rende il pulsante di chiusura bianco */
+.offcanvas .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Stile per ogni voce del menu */
+.offcanvas .list-group-item {
+    background-color: transparent;
+    border-color: #2a2c37;
+    padding: 0; /* Rimuoviamo il padding di default per darlo al link */
+}
+
+/* Link all'interno di ogni voce */
+.offcanvas-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Spazio tra icona e testo */
+    padding: 0.8rem 1.25rem;
+    color: #aeb4d3; /* Colore testo leggermente più scuro */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent; /* Bordo per l'effetto hover */
+}
+
+.offcanvas-link:hover {
+    background-color: rgba(37, 244, 238, 0.05);
+    color: #fff;
+    border-left-color: #25F4EE;
+}
+
+.offcanvas-link .material-icons {
+    color: #25F4EE; /* Colore primario per le icone */
+    transition: transform 0.3s ease;
+}
+
+.offcanvas-link:hover .material-icons {
+    transform: scale(1.1);
+}
+
+/* Stile per i pulsanti di login/logout */
+.offcanvas-body .btn {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* File: /css/style_pages.css (REGOLE GIA' ESISTENTI) */
+
+/* ... (altre regole) ... */
+
+/* --- Stili per i Pulsanti --- */
+.btn-action, .btn-secondary, .btn-danger {
+    border-radius: 25px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.7em 1.4em;
+    /* ... (altri stili comuni) ... */
+}
+
+/* Pulsante Primario (per il Reso) */
+.btn-action {
+    background: linear-gradient(90deg, #FE2C55 0%, #25F4EE 100%);
+    color: #fff;
+    border: none;
+}
+.btn-action:hover {
+    background: linear-gradient(90deg, #25F4EE 0%, #FE2C55 100%);
+    transform: scale(1.05);
+}
+
+/* Pulsante di Pericolo (per Annulla) */
+.btn-danger {
+    background: transparent;
+    color: #FE2C55;
+    border: 2px solid #FE2C55;
+}
+.btn-danger:hover {
+    background: #FE2C55;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.search-container-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-results {
+    display: none;
+    position: absolute;
+    border: 1px solid #555;
+    border-top: none;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #3a3f4c;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.autocomplete-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #555;
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-item:hover {
+    background-color: #4a5060;
+}
+
+.autocomplete-item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.autocomplete-item span {
+    font-size: 14px;
+}

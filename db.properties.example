@@ -1,0 +1,11 @@
+# CONFIGURAZIONE DATABASE PER TIKSHOP
+# ==================================
+# Istruzioni:
+# 1. Copia questo file e rinominalo in "db.properties" nella cartella radice del progetto
+#    oppure inseriscilo nel classpath del tuo server.
+# 2. Sostituisci i valori sottostanti con le credenziali del tuo database MySQL locale.
+# 3. Assicurati che il file "db.properties" NON venga mai caricato su GitHub.
+
+db.url=jdbc:mysql://localhost:3306/tikshop?useSSL=false&serverTimezone=UTC
+db.username=root
+db.password=tua_password_qui

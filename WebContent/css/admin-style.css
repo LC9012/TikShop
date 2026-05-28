@@ -1,0 +1,233 @@
+@charset "UTF-8";
+:root {
+    --bg-dark: #161823;
+    --card-bg: rgba(22, 24, 35, 0.92);
+    --border-neon: #25F4EE;
+    --accent-pink: #FE2C55;
+    --text-primary: #f2f6fa;
+    --text-secondary: #aeb4d3;
+    --border-dark: #2a2c37;
+    --status-green: #28a745;
+    --status-blue: #0d6efd;
+    --status-yellow: #f5b50a;
+    --font-primary: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-headings: 'Segoe UI Black', Impact, sans-serif;
+}
+
+/* 
+   STILI GLOBALI E LAYOUT ADMIN
+*/
+body.admin-body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 1rem; 
+}
+
+@media (min-width: 768px) {
+    body.admin-body {
+        padding: 2rem;
+    }
+}
+
+.admin-container {
+    background: var(--card-bg);
+    padding: 1.5rem; 
+    border-radius: 22px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid var(--border-neon);
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .admin-container {
+        padding: 2.5rem;
+    }
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.admin-header h1 {
+    color: var(--text-primary);
+    font-family: var(--font-headings);
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1.8rem; 
+    text-shadow: 1px 0 0 var(--accent-pink), 2px 2px 0 var(--border-neon);
+}
+@media (min-width: 768px) {
+    .admin-header h1 {
+        font-size: 2rem;
+    }
+}
+
+.admin-header .action-buttons {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0.75rem;
+}
+
+/* 
+   TABELLA ADMIN 
+    */
+.admin-table-wrapper {
+    overflow-x: auto; 
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+.admin-table thead th {
+    background-color: rgba(37, 244, 238, 0.1); 
+    color: var(--border-neon);
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-neon);
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid var(--border-dark);
+    transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:last-child {
+    border-bottom: none; 
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(37, 244, 238, 0.05);
+}
+
+.admin-table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    color: var(--text-secondary);
+}
+
+.admin-table tbody td strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/*
+   PULSANTI E BADGE
+    */
+.btn-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.6em 1.2em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.btn-admin.btn-primary {
+    background: linear-gradient(90deg, var(--accent-pink) 0%, var(--border-neon) 100%);
+    color: #fff;
+}
+.btn-admin.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-admin.btn-secondary {
+    background: transparent;
+    color: var(--border-neon);
+    border-color: var(--border-neon);
+}
+.btn-admin.btn-secondary:hover {
+    background: var(--border-neon);
+    color: var(--bg-dark);
+    transform: scale(1.05);
+}
+
+/* Badge di stato */
+.status-badge-admin {
+    display: inline-block;
+    padding: 0.4em 0.8em;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+
+.status-badge-admin.in-elaborazione { background-color: var(--status-blue); color: var(--text-primary); }
+.status-badge-admin.completato, .status-badge-admin.consegnato { background-color: var(--status-green); color: var(--text-primary); }
+.status-badge-admin.spedito { background-color: var(--status-yellow); color: var(--bg-dark); }
+.status-badge-admin.annullato, .status-badge-admin.restituito { background-color: var(--border-dark); color: var(--text-secondary); }
+
+/* 
+   RESPONSIVITÀ TABELLA (La trasformiamo in card su mobile)
+*/
+@media screen and (max-width: 992px) {
+    .admin-table-wrapper {
+        overflow-x: hidden; 
+    }
+    .admin-table thead {
+        display: none;
+    }
+
+    .admin-table tr {
+        display: block;
+        border-radius: 15px;
+        border: 1px solid var(--border-dark);
+        margin-bottom: 1rem;
+        background-color: rgba(0,0,0,0.2);
+    }
+    
+    .admin-table tbody tr:hover {
+        background-color: rgba(37, 244, 238, 0.1);
+    }
+
+    .admin-table td {
+        display: block;
+        text-align: right !important; 
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid var(--border-dark);
+    }
+    .admin-table td:last-child {
+        border-bottom: none;
+    }
+
+    .admin-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        width: calc(50% - 2rem);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+}
