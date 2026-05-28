@@ -8,17 +8,17 @@ Il progetto è stato sviluppato come applicazione web dinamica Java Enterprise (
 
 ##  Funzionalità Principali
 
-*   ** Interfaccia TikTok-Style (Shopping Innovativo):** Sfoglia i prodotti in verticale visualizzando video dimostrativi a tutto schermo, con la possibilità di aggiungere articoli al carrello e leggere recensioni in tempo reale con gesti rapidi.
-*   ** Shopping Tradizionale:** Un catalogo grigliato classico e pulito, con filtri avanzati per reparto e ricerca testuale dinamica dei prodotti.
-*   ** Autenticazione Sicura:** Registrazione ed accesso protetti con cifratura delle password tramite l'algoritmo di hashing **BCrypt** (impedendo il salvataggio di password in chiaro).
-*   ** Sistema di Ordini & Sicurezza Carte:** Gestione transazionale degli acquisti (con meccanismo di rollback ACID in caso di errore) e crittografia AES (128-bit in modalità CBC con IV) per memorizzare in modo sicuro i dettagli della carta di credito nel database.
-*   ** Carrello Persistente Integrato:** Gestione intelligente del carrello per utenti ospiti (salvato in sessione) che si fonde automaticamente (merge) nel database al momento del login o della registrazione.
-*   ** Recensioni e Valutazioni:** Gli utenti possono lasciare una valutazione da 1 a 5 stelle con commenti scritti per i prodotti acquistati, e filtrare i feedback per punteggio.
-*   ** Pannello di Amministrazione Completo:**
+*    Interfaccia TikTok-Style (Shopping Innovativo):** Sfoglia i prodotti in verticale visualizzando video dimostrativi a tutto schermo, con la possibilità di aggiungere articoli al carrello e leggere recensioni in tempo reale con gesti rapidi.
+*    Shopping Tradizionale:** Un catalogo grigliato classico e pulito, con filtri avanzati per reparto e ricerca testuale dinamica dei prodotti.
+*    Autenticazione Sicura:** Registrazione ed accesso protetti con cifratura delle password tramite l'algoritmo di hashing **BCrypt** (impedendo il salvataggio di password in chiaro).
+*    Sistema di Ordini & Sicurezza Carte:** Gestione transazionale degli acquisti (con meccanismo di rollback ACID in caso di errore) e crittografia AES (128-bit in modalità CBC con IV) per memorizzare in modo sicuro i dettagli della carta di credito nel database.
+*    Carrello Persistente Integrato:** Gestione intelligente del carrello per utenti ospiti (salvato in sessione) che si fonde automaticamente (merge) nel database al momento del login o della registrazione.
+*    Recensioni e Valutazioni:** Gli utenti possono lasciare una valutazione da 1 a 5 stelle con commenti scritti per i prodotti acquistati, e filtrare i feedback per punteggio.
+*    Pannello di Amministrazione Completo:**
     *   Gestione dei prodotti (aggiunta, attivazione/disattivazione logica degli articoli).
     *   Monitoraggio degli ordini totali con ordinamenti e filtri per stato (Pending, Spedito, ecc.).
     *   Aggiornamento istantaneo del prezzo del catalogo.
-    *   **📄 Generazione Fattura PDF:** Esportazione automatica della fattura d'acquisto in formato PDF professionale mediante la libreria **OpenPDF**.
+    *   Generazione Fattura PDF:** Esportazione automatica della fattura d'acquisto in formato PDF professionale mediante la libreria **OpenPDF**.
 
 ---
 
@@ -59,10 +59,10 @@ TikShopJava/
 ##  Guida all'Installazione e Avvio
 
 ### 1. Prerequisiti
-*   **Java Development Kit (JDK):** Versione 8 o superiore (consigliata JDK 11 o 17).
-*   **IDE consigliato:** Eclipse IDE for Enterprise Java and Web Developers (oppure IntelliJ IDEA Ultimate / VS Code opportunamente configurati).
-*   **Server Web:** Apache Tomcat 9.x.
-*   **Database:** MySQL Server 8.0+.
+*   Java Development Kit (JDK):** Versione 8 o superiore (consigliata JDK 11 o 17).
+*   IDE consigliato:** Eclipse IDE for Enterprise Java and Web Developers (oppure IntelliJ IDEA Ultimate / VS Code opportunamente configurati).
+*   Server Web:** Apache Tomcat 9.x.
+*   Database:** MySQL Server 8.0+.
 
 ### 2. Configurazione del Database
 1.  Avvia la tua istanza locale di MySQL.
