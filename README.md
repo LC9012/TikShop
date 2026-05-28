@@ -1,4 +1,4 @@
-# 🛍️ TikShop - Java Dynamic Web E-Commerce
+#  TikShop - Java Dynamic Web E-Commerce
 
 Benvenuto in **TikShop**, un'innovativa piattaforma di e-commerce accattivante e moderna che unisce la tradizionale esperienza di shopping online con un'interfaccia dinamica e interattiva ispirata a **TikTok**, arricchita da video di presentazione per ciascun prodotto.
 
@@ -6,15 +6,15 @@ Il progetto è stato sviluppato come applicazione web dinamica Java Enterprise (
 
 ---
 
-## 🌟 Funzionalità Principali
+##  Funzionalità Principali
 
-*   **🎬 Interfaccia TikTok-Style (Shopping Innovativo):** Sfoglia i prodotti in verticale visualizzando video dimostrativi a tutto schermo, con la possibilità di aggiungere articoli al carrello e leggere recensioni in tempo reale con gesti rapidi.
-*   **🛒 Shopping Tradizionale:** Un catalogo grigliato classico e pulito, con filtri avanzati per reparto e ricerca testuale dinamica dei prodotti.
-*   **🔐 Autenticazione Sicura:** Registrazione ed accesso protetti con cifratura delle password tramite l'algoritmo di hashing **BCrypt** (impedendo il salvataggio di password in chiaro).
-*   **💳 Sistema di Ordini & Sicurezza Carte:** Gestione transazionale degli acquisti (con meccanismo di rollback ACID in caso di errore) e crittografia AES (128-bit in modalità CBC con IV) per memorizzare in modo sicuro i dettagli della carta di credito nel database.
-*   **📦 Carrello Persistente Integrato:** Gestione intelligente del carrello per utenti ospiti (salvato in sessione) che si fonde automaticamente (merge) nel database al momento del login o della registrazione.
-*   **⭐ Recensioni e Valutazioni:** Gli utenti possono lasciare una valutazione da 1 a 5 stelle con commenti scritti per i prodotti acquistati, e filtrare i feedback per punteggio.
-*   **👑 Pannello di Amministrazione Completo:**
+*   ** Interfaccia TikTok-Style (Shopping Innovativo):** Sfoglia i prodotti in verticale visualizzando video dimostrativi a tutto schermo, con la possibilità di aggiungere articoli al carrello e leggere recensioni in tempo reale con gesti rapidi.
+*   ** Shopping Tradizionale:** Un catalogo grigliato classico e pulito, con filtri avanzati per reparto e ricerca testuale dinamica dei prodotti.
+*   ** Autenticazione Sicura:** Registrazione ed accesso protetti con cifratura delle password tramite l'algoritmo di hashing **BCrypt** (impedendo il salvataggio di password in chiaro).
+*   ** Sistema di Ordini & Sicurezza Carte:** Gestione transazionale degli acquisti (con meccanismo di rollback ACID in caso di errore) e crittografia AES (128-bit in modalità CBC con IV) per memorizzare in modo sicuro i dettagli della carta di credito nel database.
+*   ** Carrello Persistente Integrato:** Gestione intelligente del carrello per utenti ospiti (salvato in sessione) che si fonde automaticamente (merge) nel database al momento del login o della registrazione.
+*   ** Recensioni e Valutazioni:** Gli utenti possono lasciare una valutazione da 1 a 5 stelle con commenti scritti per i prodotti acquistati, e filtrare i feedback per punteggio.
+*   ** Pannello di Amministrazione Completo:**
     *   Gestione dei prodotti (aggiunta, attivazione/disattivazione logica degli articoli).
     *   Monitoraggio degli ordini totali con ordinamenti e filtri per stato (Pending, Spedito, ecc.).
     *   Aggiornamento istantaneo del prezzo del catalogo.
@@ -22,7 +22,7 @@ Il progetto è stato sviluppato come applicazione web dinamica Java Enterprise (
 
 ---
 
-## 🛠️ Stack Tecnologico
+##  Stack Tecnologico
 
 *   **Backend Core:** Java SE, Java EE Servlet 3.1 & JSP (JavaServer Pages)
 *   **Database & Persistenza:** MySQL 8.x, JDBC (Java Database Connectivity) con pool di connessione nativo
@@ -33,7 +33,7 @@ Il progetto è stato sviluppato come applicazione web dinamica Java Enterprise (
 
 ---
 
-## 📐 Architettura del Progetto
+##  Architettura del Progetto
 
 Il progetto segue rigorosamente il pattern architetturale **MVC**:
 
@@ -56,7 +56,7 @@ TikShopJava/
 
 ---
 
-## 🚀 Guida all'Installazione e Avvio
+##  Guida all'Installazione e Avvio
 
 ### 1. Prerequisiti
 *   **Java Development Kit (JDK):** Versione 8 o superiore (consigliata JDK 11 o 17).
@@ -102,7 +102,7 @@ La cifratura dei numeri delle carte di credito richiede che siano configurate su
 
 ---
 
-## 👥 Credenziali di Test preconfigurate
+##  Credenziali di Test preconfigurate
 
 Lo script `schema.sql` inserisce automaticamente due utenti per testare l'applicazione:
 
@@ -118,10 +118,8 @@ Lo script `schema.sql` inserisce automaticamente due utenti per testare l'applic
 ## Membri del Gruppo
 
 Questo progetto è stato realizzato in collaborazione da:
-* **Nome Cognome** - [Profilo GitHub](https://github.com/tuo-username) (Matricola: `123456`)
-* **Nome Cognome** - [Profilo GitHub](https://github.com/tuo-username) (Matricola: `123456`)
-
+* **Luca Di Gennaro** - [ldigennaro8](https://github.com/ldigennaro8) (Matricola: `0512119432`)
 ---
 
-## 📜 Licenza ed Utilizzo
+##  Licenza ed Utilizzo
 Questo progetto è stato sviluppato a scopi didattici accademici. È libero da utilizzare, modificare ed estendere per progetti personali o universitari.
