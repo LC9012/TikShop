@@ -4,6 +4,7 @@ Benvenuto in **TikShop**, un'innovativa piattaforma di e-commerce accattivante e
 
 Il progetto è stato sviluppato come applicazione web dinamica Java Enterprise (Java EE) basata sull'architettura **Model-View-Controller (MVC)** standard, utilizzando esclusivamente servlet, pagine JSP e JDBC per l'interazione con il database.
 
+
 ---
 
 ##  Funzionalità Principali
